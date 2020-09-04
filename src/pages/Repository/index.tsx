@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRouteMatch , Link} from 'react-router-dom';
 
-import { FiChevronLeft } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import logoImg from '../../assets/logo.svg';
 
-import { Header, RepositoryInfo } from './styles';
+import { Header, RepositoryInfo, Issues } from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -17,7 +17,7 @@ const Repository: React.FC = () => {
     <>
       <Header>
         <img src={logoImg} alt="Github Explorer"/>
-        <Link to="/dashboard">
+        <Link to="/">
           <FiChevronLeft size={20} />
           Voltar
         </Link>
@@ -32,8 +32,33 @@ const Repository: React.FC = () => {
           </div>
         </header>
 
-        <ul></ul>
+        <ul>
+          <li>
+            <strong>1808</strong>
+            <span>Stars</span>
+          </li>
+          <li>
+            <strong>48</strong>
+            <span>Forks</span>
+          </li>
+          <li>
+            <strong>67</strong>
+            <span>Issues abertas</span>
+          </li>
+        </ul>
       </RepositoryInfo>
+
+      <Issues>
+          <Link
+            to={`/repositories`}
+          >
+            <div>
+              <strong>repository.full_name</strong>
+              <p>repository.description</p>
+            </div>
+            <FiChevronRight size={50} />
+          </Link>
+      </Issues>
     </>
   );
 };
